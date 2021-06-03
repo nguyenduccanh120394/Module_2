@@ -1,0 +1,6 @@
+Day la 1 file test :
+day la dong dau tien,
+day la dong thu 2,
+day la dong thu 3,
+day la dong thu 4,
+day la dong thu 5.

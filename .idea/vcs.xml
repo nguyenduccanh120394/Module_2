@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/BMI" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/BaiTapCuoiTuan" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Bank" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ClassRectangle" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ConvertMoney" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ConvertNumbertoString" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Demo_FindDivisor" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Demo_SetupMenu" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Demo_findDayofmonth" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Demo_khai_bao_bien" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Demolt" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/DisplayHello" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Finleapyear" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/SystemTime" vcs="Git" />
+  </component>
+</project>
