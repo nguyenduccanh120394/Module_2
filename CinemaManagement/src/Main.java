@@ -5,9 +5,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Login login =new Login();
+        Menu menu = new Menu();
         CustomerMangement customerMangement = new CustomerMangement();
-        System.out.println("Do you already have an account?");
-        System.out.println("1.Create new account   2.Login");
+        menu.startMenu();
         int choice = scanner.nextInt() ;
         switch (choice){
             case 1:
@@ -20,11 +20,15 @@ public class Main {
                         login.logIn();
                         break;
                     case 2:
+                        customerMangement.registration();
                         break;
                 }
                 break;
             case 2:
                 login.logIn();
+                break;
+            case 3:
+                login.nonMember();
                 break;
         }
     }

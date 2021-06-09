@@ -7,12 +7,15 @@ public class Staff {
     private static final int BASIC_SALARY_RANK_C = 5500000;
     private static final int SUPPORT_SALARY = 1000000;
     private static final int HOURLY_WAGES_OVT = 50000;
+    private static final String MISSION_CINEMA_STAFF = "Cinema Staff";
+    private static final String MISSION_TICKER_SELLER = "Ticker Seller";
 
     private String id;
     private String name;
     private String gender;
     private String address;
     private String phoneNumber;
+    private String mission;
     private int overTime;
     private String rank;
     private int totalSalary;
@@ -20,12 +23,13 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(String id, String name, String gender, String address, String phoneNumber, int overTime,String rank) {
+    public Staff(String id, String name, String gender, String address, String phoneNumber,String mission ,int overTime,String rank) {
         this.id = id;
         this.name = name;
         this.gender = gender;
         this.address = address;
         this.phoneNumber = phoneNumber;
+        this.mission = mission;
         this.overTime = overTime;
         this.rank = rank;
     }
@@ -55,6 +59,27 @@ public class Staff {
         return gender;
     }
 
+    public static String getMissionCinemaStaff() {
+        return MISSION_CINEMA_STAFF;
+    }
+
+    public static String getMissionTickerSeller() {
+        return MISSION_TICKER_SELLER;
+    }
+
+    public String getMission() {
+        if (mission.equals("1")){
+            this.mission = MISSION_TICKER_SELLER;
+        }else if (mission.equals("2")){
+            this.mission = MISSION_CINEMA_STAFF;
+        }
+        return mission;
+    }
+
+    public void setMission(String mission) {
+        this.mission = mission;
+    }
+
     public void setGender(String gender) {
         this.gender = gender;
     }
@@ -74,6 +99,7 @@ public class Staff {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
+
 
     public int getOverTime() {
         return overTime;
@@ -109,7 +135,7 @@ public class Staff {
 
     @Override
     public String toString() {
-        return "Staff{ ID: "+id+", NAME: "+name +", GENDER: "+getGender()+", ADDRESS: "+address+", PHONE NUMBER: "+phoneNumber+
-                ", RANK: "+rank+", TOTAL SALARY: "+getTotalSalary()+'}';
+        return "Staff{ ID: "+id+", NAME: "+name +", GENDER: "+getGender()+", ADDRESS: "+address+", PHONE NUMBER: "+phoneNumber
+        +", MISSION: "+getMission()+", RANK: "+rank+", TOTAL SALARY: "+getTotalSalary()+'}';
     }
 }

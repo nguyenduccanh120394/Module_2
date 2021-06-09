@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
-
 public class Login {
     static CustomerMangement customerMangement = new CustomerMangement();
     public static String inPutId(){
@@ -24,7 +21,6 @@ public class Login {
         return passWord;
     }
     public static boolean checkIdCustomer(String id,String passWord){
-        System.out.println(customerMangement.getCustomerList());
         for (int i = 0; i < customerMangement.getCustomerList().size(); i++) {
             if (customerMangement.getCustomerList().get(i).getIdLogin().equals(id)&&customerMangement.getCustomerList().get(i).getPassWord().equals(passWord)){
                 return true;
@@ -33,10 +29,15 @@ public class Login {
         return false;
     }
     public static void logIn(){
+        final String ID_ADMIN="admin";
+        final String PASSWORD_ADMIN="admin";
         Scanner scanner = new Scanner(System.in);
         Menu menu = new Menu();
-        String id = inPutId();
-        String passWord = inPutPassWord();
+        String id;
+        String passWord;
+        do {
+            id = inPutId();
+            passWord = inPutPassWord();
             if (id.equals("admin")&&passWord.equals("admin")){
                 System.out.println("Function Selection");
                 int choice;
@@ -51,7 +52,7 @@ public class Login {
                                 System.out.println("Add");
                         }
                     }
-                }while (choice>0&&choice<6);
+                }while (choice>0||choice<6);
             }else if (checkIdCustomer(id,passWord)){
                 System.out.println(true);
                 int choice;
@@ -67,10 +68,41 @@ public class Login {
                                 break;
                         }
                     }
-                }while (choice>0&&choice<6);
+                }while (choice>0||choice<6);
             }else {
-                System.out.println("Nhap sai");
+                System.err.println("Enter Error!");
             }
-        }
-
+        }while (id!=ID_ADMIN&&passWord!=PASSWORD_ADMIN||checkIdCustomer(id,passWord)==false);
+    }
+    public static void nonMember(){
+        Menu menu = new Menu();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Function Selection");
+        int choice;
+        do {
+            menu.menuNonMember();
+            choice = scanner.nextInt();
+            if (choice<=0||choice>4){
+                System.out.println("Enter your choice 1 to 4");
+            }else {
+                switch (choice){
+                    case 1:
+                        System.out.println("SEARCH");
+                        break;
+                    case 2:
+                        System.out.println("DISPLAY");
+                        break;
+                    case 3:
+                        System.out.println("LOGIN");
+                        logIn();
+                        break;
+                    case 4:
+                        System.out.println("REGISTER");
+                        customerMangement.registration();
+                        logIn();
+                        break;
+                }
+            }
+        }while (choice<=0||choice>4);
+    }
 }

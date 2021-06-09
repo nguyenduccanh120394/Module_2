@@ -24,6 +24,8 @@ public class CustomerMangement {
         return customerList;
     }
     public void registration(){
+        Menu menu = new Menu();
+        menu.menuRegister();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Name:");
         String name= scanner.nextLine();

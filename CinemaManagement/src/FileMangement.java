@@ -36,7 +36,7 @@ public class FileMangement {
             br = new BufferedReader(fileReader);
             while ((line= br.readLine())!=null){
                String[] str = line.split(",");
-                staffList.add(new Staff(str[0],str[1],str[2],str[3],str[4],Integer.parseInt(str[5]),str[6]));
+                staffList.add(new Staff(str[0],str[1],str[2],str[3],str[4],str[5],Integer.parseInt(str[6]),str[7]));
                 }
             } catch (FileNotFoundException fileNotFoundException) {
             fileNotFoundException.printStackTrace();
