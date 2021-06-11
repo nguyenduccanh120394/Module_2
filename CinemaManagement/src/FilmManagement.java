@@ -14,4 +14,10 @@ public class FilmManagement {
         listFilm.add(film);
         fileMangement.writeToFileFilm("dataFilm.csv",listFilm);
     }
+    public void disPlayListFilm(){
+        for (Film item: listFilm){
+            System.out.println(item);
+        }
+        System.out.println("");
+    }
 }

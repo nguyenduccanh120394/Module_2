@@ -1,5 +1,4 @@
 public class CinemaRoom {
-    Staff staffs = new Staff();
     StaffManagement staffManagement =new StaffManagement() ;
     private static final String PROJECTOR_HD = "Projector Christie CP2220";
     private static final String PROJECTOR_3D = "Technology ScreenX 4k";

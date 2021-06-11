@@ -26,10 +26,8 @@ public class MovieSchedule {
     public void setMovieShift(String movieShift) {
         this.movieShift = movieShift;
     }
-    public String getIdMovie(){
-        return getMovie(idMovie);
-    }
-    public String getMovie(String idMovie) {
+
+    public String getIdMovie(String idMovie) {
         for (int i = 0; i < filmManagement.listFilm.size(); i++) {
             if (filmManagement.listFilm.get(i).getIdFilm().equals(idMovie));
             return filmManagement.listFilm.get(i).getName();
@@ -41,4 +39,12 @@ public class MovieSchedule {
         this.idMovie = idMovie;
     }
 
+    @Override
+    public String toString() {
+        return "MovieSchedule{" +
+                "movieDay: " + movieDay + '\'' +
+                ", movieShift: " + movieShift + '\'' +
+                ", idMovie: " + idMovie + '\'' +
+                '}';
+    }
 }

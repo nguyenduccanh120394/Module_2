@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Staff {
     private static final String RANK_A = "A";
     private static final String RANK_B = "B";
@@ -18,12 +20,12 @@ public class Staff {
     private String mission;
     private int overTime;
     private String rank;
-    private int totalSalary;
+
 
     public Staff() {
     }
 
-    public Staff(String id, String name, String gender, String address, String phoneNumber,String mission ,int overTime,String rank) {
+    public Staff(String id, String name, String gender, String address, String phoneNumber, String mission, int overTime, String rank) {
         this.id = id;
         this.name = name;
         this.gender = gender;
@@ -32,6 +34,8 @@ public class Staff {
         this.mission = mission;
         this.overTime = overTime;
         this.rank = rank;
+
+
     }
 
     public String getId() {
@@ -76,6 +80,38 @@ public class Staff {
         return mission;
     }
 
+    public static String getRankA() {
+        return RANK_A;
+    }
+
+    public static String getRankB() {
+        return RANK_B;
+    }
+
+    public static String getRankC() {
+        return RANK_C;
+    }
+
+    public static int getBasicSalaryRankA() {
+        return BASIC_SALARY_RANK_A;
+    }
+
+    public static int getBasicSalaryRankB() {
+        return BASIC_SALARY_RANK_B;
+    }
+
+    public static int getBasicSalaryRankC() {
+        return BASIC_SALARY_RANK_C;
+    }
+
+    public static int getSupportSalary() {
+        return SUPPORT_SALARY;
+    }
+
+    public static int getHourlyWagesOvt() {
+        return HOURLY_WAGES_OVT;
+    }
+
     public void setMission(String mission) {
         this.mission = mission;
     }
@@ -110,6 +146,13 @@ public class Staff {
     }
 
     public String getRank() {
+        if (this.rank.equals("1")){
+            this.rank=RANK_A;
+        }else if (this.rank.equals("2")){
+            this.rank=RANK_B;
+        }else if (this.rank.equals("3")){
+            this.rank=RANK_C;
+        }
         return rank;
     }
 
@@ -117,25 +160,22 @@ public class Staff {
         this.rank = rank;
     }
 
-    public int getTotalSalary() {
-        if (rank.equals(RANK_A)){
-            this.totalSalary = BASIC_SALARY_RANK_A + overTime*HOURLY_WAGES_OVT +SUPPORT_SALARY;
-        }else if (rank.equals(RANK_B)){
-            this.totalSalary = BASIC_SALARY_RANK_B + overTime*HOURLY_WAGES_OVT +SUPPORT_SALARY;
-        }else if (rank.equals(RANK_C)){
-            this.totalSalary = BASIC_SALARY_RANK_C + overTime*HOURLY_WAGES_OVT +SUPPORT_SALARY;
-        }
-        return totalSalary;
-    }
+//    public int getTotalSalary(String rank) {
+//        if (rank.equals(RANK_A)){
+//            totalSalary = 6500000+overTime*50000;
+//        }else if (rank.equals(RANK_B)){
+//
+//            totalSalary = 6000000+overTime*50000;
+//        }else if (rank.equals(RANK_C)){
+//            totalSalary = 5500000+overTime*50000;
+//        }
+//        return totalSalary;
+//    }
 
-
-    public void setTotalSalary(int totalSalary) {
-        this.totalSalary = totalSalary;
-    }
 
     @Override
     public String toString() {
         return "Staff{ ID: "+id+", NAME: "+name +", GENDER: "+getGender()+", ADDRESS: "+address+", PHONE NUMBER: "+phoneNumber
-        +", MISSION: "+getMission()+", RANK: "+rank+", TOTAL SALARY: "+getTotalSalary()+'}';
+        +", MISSION: "+getMission()+", RANK: "+getRank()+'}';
     }
 }

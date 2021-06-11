@@ -32,6 +32,7 @@ public class Login {
         final String ID_ADMIN="admin";
         final String PASSWORD_ADMIN="admin";
         Scanner scanner = new Scanner(System.in);
+        Input input = new Input();
         Menu menu = new Menu();
         String id;
         String passWord;
@@ -49,7 +50,54 @@ public class Login {
                     }else {
                         switch (choice){
                             case 1:
-                                System.out.println("Add");
+                                int type;
+                                do {
+                                    menu.menuAddAdmin();
+                                    System.out.println("Enter additional type");
+                                    type= scanner.nextInt();
+                                    if (type<=0||type>5){
+                                        System.out.println("Enter type 1 to 5");
+                                    }else {
+                                        switch (type){
+                                            case 1:
+                                                Film film = input.inputFilm();
+                                                FilmManagement filmManagement = new FilmManagement();
+                                                filmManagement.addFilm(film);
+                                                break;
+                                            case 2:
+                                                MovieScheduleManagement movieScheduleManagement = new MovieScheduleManagement();
+                                                menu.menuInputMovieSchedule();
+                                                System.out.println("Enter Premiere Date:");
+                                                scanner.nextLine();
+                                                String movieDay = scanner.nextLine();
+                                                System.out.println("Enter Movie Shift:");
+                                                String movieShift = scanner.nextLine();
+                                                menu.listFilm();
+                                                System.out.println("Enter Movie ID:");
+                                                String idMovie = scanner.nextLine();
+                                                MovieSchedule movieSchedule = new MovieSchedule(movieDay,movieShift,idMovie);
+                                                movieScheduleManagement.addMovieSchedule(movieSchedule,idMovie);
+                                                System.out.println("Finish");
+                                                break;
+                                            case 3:
+                                                input.inputStaff();
+                                                break;
+                                            case 4:
+                                                 CinemaRoomManagement cinemaRoomManagement = new CinemaRoomManagement();
+                                                 CinemaRoom cinemaRoom1 = new CinemaRoom("R02","1","1","S02");
+                                                 CinemaRoom cinemaRoom2 = new CinemaRoom("R02","1","1","S04");
+                                                 cinemaRoomManagement.add(cinemaRoom1);
+                                                 cinemaRoomManagement.add(cinemaRoom2);
+                                                 for (CinemaRoom item:cinemaRoomManagement.getListCinemaRoom()){
+                                                     System.out.println(item);
+                                                 }
+                                                break;
+                                            case 5:
+                                                break;
+                                        }
+                                    }
+                                }while (type>0||type<6);
+                                break;
                         }
                     }
                 }while (choice>0||choice<6);

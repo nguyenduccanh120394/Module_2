@@ -1,4 +1,5 @@
-CN2,Canh,Male,Ha Noi,0312456,20,A
-CN3,Long,Male,Ha Noi,0312254,20,A
-CN4,Binh,Male,Ha Noi,0315555,20,A
-
+Staff ID,Staff Name,Staff Gender,Staff Address,Staff PhoneNumber,Staff Mission,OverTime Of Staff,Staff Rank
+S01,NGUYỄN ĐỨC CẢNH,Male,HÀ NỘI,0366265953,Ticker Seller,20,A
+S02,NGUYỄN VĂN BÌNH,Male,HÀ NỘI,0366254489,Cinema Staff,15,B
+S03,NGUYỄN MAI ANH,Female,HÀ TÂY,0167123175,Ticker Seller,15,B
+S04,NGUYỄN VĂN LONG,Male,HÀ NỘI,0167487956,Cinema Staff,20,C

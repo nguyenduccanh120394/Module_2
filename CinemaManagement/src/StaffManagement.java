@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StaffManagement {
-    FileMangement fileMangement = new FileMangement();
+    private static final String MISSION_CINEMA_STAFF = "Cinema Staff";
+    private static final String MISSION_TICKER_SELLER = "Ticker Seller";
+     FileMangement fileMangement = new FileMangement();
      List<Staff>listStaff ;
     public StaffManagement(){
         try {
@@ -23,4 +25,14 @@ public class StaffManagement {
             System.out.println(listStaff.get(i));
         }
     }
+    public List<Staff> getListStaffCinemaRoom(List<Staff>listStaff){
+        List<Staff>listStaffCinemaRoom = new ArrayList<>();
+        for (int i = 0; i < listStaff.size(); i++) {
+            if (listStaff.get(i).getMission().equals("Cinema Staff")){
+                listStaffCinemaRoom.add( listStaff.get(i));
+            }
+        }
+        return listStaffCinemaRoom;
+    }
+
 }
