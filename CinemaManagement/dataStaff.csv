@@ -1,5 +1,5 @@
-Staff ID,Staff Name,Staff Gender,Staff Address,Staff PhoneNumber,Staff Mission,OverTime Of Staff,Staff Rank
+model.Staff ID,model.Staff Name,model.Staff Gender,model.Staff Address,model.Staff PhoneNumber,model.Staff Mission,OverTime Of model.Staff,model.Staff Rank
 S01,NGUYỄN ĐỨC CẢNH,Male,HÀ NỘI,0366265953,Ticker Seller,20,A
-S02,NGUYỄN VĂN BÌNH,Male,HÀ NỘI,0366254489,Cinema Staff,15,B
+S02,NGUYỄN VĂN BÌNH,Male,HÀ NỘI,0366254489,Cinema model.Staff,15,B
 S03,NGUYỄN MAI ANH,Female,HÀ TÂY,0167123175,Ticker Seller,15,B
-S04,NGUYỄN VĂN LONG,Male,HÀ NỘI,0167487956,Cinema Staff,20,C
+S04,NGUYỄN VĂN LONG,Male,HÀ NỘI,0167487956,Cinema model.Staff,20,C
