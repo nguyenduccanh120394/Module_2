@@ -1,5 +1,6 @@
 package service;
 
+import model.Film;
 import model.Staff;
 
 import java.util.List;
@@ -328,5 +329,31 @@ public class Menu {
         System.out.format(leftAlignFormat,"Back to Home Page",6);
         System.out.format(leftAlignFormat,"Exit Program",7);
         System.out.format("+---------------------------+---------+%n");
+    }
+    public void findFilm(){
+        String leftAlignFormat = "| %-14s | %-7d |%n";
+        System.out.format("+----------------+---------+%n");
+        System.out.format("|       SEARCH FILM BY     |%n");
+        System.out.format("+----------------+---------+%n");
+        System.out.format("| Type           |Selection|%n");
+        System.out.format("+----------------+---------+%n");
+        System.out.format(leftAlignFormat,"Country",1);
+        System.out.format(leftAlignFormat,"Name",2);
+        System.out.format(leftAlignFormat,"Category",3);
+        System.out.format(leftAlignFormat,"Actor",4);
+        System.out.format("+----------------+---------+%n");
+    }
+    public void disPlayFilm(List<Film>list) {
+        String leftAlignFormat = "| %-147s |%n";
+        System.out.format("+-----------------------------------------------------------------------------------------------------------------------------------------------------+%n");
+        System.out.format("|                                                                  FILM LIST                                                                          |%n");
+        System.out.format("+-----------------------------------------------------------------------------------------------------------------------------------------------------+%n");
+        for (int i = 0; i < list.size(); i++) {
+            System.out.format(leftAlignFormat, "ID: " + list.get(i).getIdFilm() + ", Name: " + list.get(i).getName() +
+                    ", Time: " + list.get(i).getShowTime() + ", Director: " + list.get(i).getDirectors() +
+                    ", Actor: " + list.get(i).getActor() + ", Year: " + list.get(i).getYearOfManufacture() +
+                    ", Country: " + list.get(i).getCountry() + ", Category: " + list.get(i).getCategory());
+        }
+        System.out.format("+-----------------------------------------------------------------------------------------------------------------------------------------------------+%n");
     }
 }

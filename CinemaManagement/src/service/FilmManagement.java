@@ -47,4 +47,32 @@ public class FilmManagement{
         }
         return true;
     }
+    public void delete(String id){
+        int index=checkIndex(id);
+        if (index==-1){
+            System.out.println("Not Found");
+        }else {
+            listFilm.remove(index);
+            file.writeToFileFilm("dataFilm.csv",listFilm);
+        }
+    }
+
+    public List<Film> searchByCountry(String country){
+        List<Film>filmListLikeCountry = new ArrayList<>();
+        for (int i = 0; i < listFilm.size(); i++) {
+            if (listFilm.get(i).getCountry().equals(country)){
+                filmListLikeCountry.add(listFilm.get(i));
+            }
+        }
+        return filmListLikeCountry;
+    }
+    public List<Film> searchByName(String name){
+        List<Film>filmListSameName = new ArrayList<>();
+        for (int i = 0; i < listFilm.size(); i++) {
+            if (listFilm.get(i).getName().equals(name)){
+                filmListSameName.add(listFilm.get(i));
+            }
+        }
+        return filmListSameName;
+    }
 }

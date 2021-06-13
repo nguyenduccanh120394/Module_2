@@ -22,7 +22,14 @@ public class Admin {
         this.name = name;
     }
     public void mngAdmin(){
+        FilmManagement filmManagement = new FilmManagement();
         Menu menu = new Menu();
+        final String COUNTRY1_VN = "Việt Nam";
+        final String COUNTRY2_USA = "Mỹ";
+        final String COUNTRY3_JP = "Nhật Bản";
+        final String COUNTRY4_KR = "Hàn Quốc";
+        final String COUNTRY5_CN = "Trung Quốc";
+        final String COUNTRY6_TL = "Thái Lan";
         Scanner scanner = new Scanner(System.in);
         while (true){
             menu.menuTotalManagement();
@@ -300,14 +307,123 @@ public class Admin {
                                     System.out.println("Enter Content: ");
                                     String content = scanner.nextLine();
                                     Film film = new Film(idFilm,name,showTime,directors,actor,yearOfManufacture,country,category,content);
-                                    FilmManagement filmManagement = new FilmManagement();
                                     filmManagement.addFilm(film);
                                     break;
                                 case 2:
+                                    System.out.println("------UPDATE FILM------");
+                                    String idUd ;
+                                    scanner.nextLine();
+                                    do {
+                                        System.out.println("Enter ID Film u want update:");
+                                       idUd = scanner.nextLine();
+                                       if (filmManagement.onlyIDFilm(idUd)){
+                                           System.out.println("Not Found");
+                                       }
+                                    }while (filmManagement.onlyIDFilm(idUd));
+                                    Input input = new Input();
+                                    Film film1= input.inputFilm();
+                                    filmManagement.editFilm(film1,idUd);
                                     break;
                                 case 3:
+                                    System.out.println("------DELETE FILM------");
+                                    System.out.println("Enter ID Film U want Delete:");
+                                    String idDel;
+                                    scanner.nextLine();
+                                    do {
+                                        System.out.println("Enter ID Film u want delete:");
+                                        idDel = scanner.nextLine();
+                                        if (filmManagement.onlyIDFilm(idDel)){
+                                            System.out.println("Not Found");
+                                        }
+                                    }while (filmManagement.onlyIDFilm(idDel));
+                                    System.out.println("Do you really want to delete");
+                                    System.out.println("1.OK                  2.CANCEL");
+                                    int choose1=scanner.nextInt();
+                                    switch (choose1){
+                                        case 1:
+                                            filmManagement.delete(idDel);
+                                            System.out.println("Successful delete");
+                                            break;
+                                        case 2:
+                                            System.out.println("Cancel successfully");
+                                            break;
+                                    }
                                     break;
                                 case 4:
+                                    menu.findFilm();
+                                    System.out.println("You want to search movies by:");
+                                    int choose=-1;
+                                    while (choose==-1){
+                                        try {
+                                            choose=scanner.nextInt();
+                                            if (choose<=0||choose>4){
+                                                System.out.println("Enter from 1 to 4");
+                                            }
+                                        }catch (InputMismatchException exception){
+                                            System.out.println("Enter wrong Data type");
+                                        }finally {
+                                            scanner.nextLine();
+                                        }
+                                    }
+                                    switch (choose){
+                                        case 1:
+                                            menu.menuCountry();
+                                            System.out.println("Enter the country you want to find");
+                                            int searchbycountry=-1;
+                                            while (searchbycountry==-1){
+                                                try {
+                                                    searchbycountry=scanner.nextInt();
+                                                    if (searchbycountry<=0||searchbycountry>6){
+                                                        System.out.println("Enter 1 to 6");
+                                                    }
+                                                }catch (InputMismatchException exception){
+                                                    System.out.println("Enter wrong Data type");
+                                                }finally {
+                                                    scanner.nextLine();
+                                                }
+                                            }
+                                            switch (searchbycountry){
+                                                case 1:
+                                                    List<Film>listFilmSameCountry1 = filmManagement.searchByCountry(COUNTRY1_VN);
+                                                    menu.disPlayFilm(listFilmSameCountry1);
+                                                    break;
+                                                case 2:
+                                                    List<Film>listFilmSameCountry2 = filmManagement.searchByCountry(COUNTRY2_USA);
+                                                    menu.disPlayFilm(listFilmSameCountry2);
+                                                    break;
+                                                case 3:
+                                                    List<Film>listFilmSameCountry3 = filmManagement.searchByCountry(COUNTRY3_JP);
+                                                    menu.disPlayFilm(listFilmSameCountry3);
+                                                    break;
+                                                case 4:
+                                                    List<Film>listFilmSameCountry4 = filmManagement.searchByCountry(COUNTRY4_KR);
+                                                    menu.disPlayFilm(listFilmSameCountry4);
+                                                    break;
+                                                case 5:
+                                                    List<Film>listFilmSameCountry5 = filmManagement.searchByCountry(COUNTRY5_CN);
+                                                    menu.disPlayFilm(listFilmSameCountry5);
+                                                    break;
+                                                case 6:
+                                                    List<Film>listFilmSameCountry6 = filmManagement.searchByCountry(COUNTRY6_TL);
+                                                    menu.disPlayFilm(listFilmSameCountry6);
+                                                    break;
+                                        }
+
+                                            break;
+                                        case 2:
+                                            System.out.println("---------SEARCH BY NAME---------");
+                                            System.out.println("Enter Name Film U want to find:");
+                                            String nameSearch = scanner.nextLine();
+                                            List<Film>filmListSameName= filmManagement.searchByName(nameSearch);
+                                            menu.disPlayFilm(filmListSameName);
+                                            break;
+                                        case 3:
+                                            System.out.println("------SEARCH BY CATEGORY------");
+                                            break;
+                                        case 4:
+                                            System.out.println("------SEARCH BY ACTOR------");
+                                            break;
+                                    }
                                     break;
                                 case 5:
                                     break;
