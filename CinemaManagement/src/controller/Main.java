@@ -1,9 +1,6 @@
 package controller;
-
-import controller.Login;
 import service.CustomerMangement;
 import service.Menu;
-
 import java.util.Scanner;
 
 public class Main {
@@ -11,6 +8,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Login login =new Login();
         Menu menu = new Menu();
+        NonMember nonMember = new NonMember();
         CustomerMangement customerMangement = new CustomerMangement();
         menu.startMenu();
         int choice = scanner.nextInt() ;
@@ -33,7 +31,7 @@ public class Main {
                 login.logIn();
                 break;
             case 3:
-                login.nonMember();
+                nonMember.nonMember();
                 break;
         }
     }

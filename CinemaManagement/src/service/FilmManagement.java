@@ -1,29 +1,27 @@
 package service;
-
 import model.Film;
-import service.FileMangement;
-
+import java.util.ArrayList;
 import java.util.List;
 
-public class FilmManagement {
-    FileMangement fileMangement = new FileMangement();
+public class FilmManagement{
+    FileFilmManagement file = new FileFilmManagement();
     List<Film> listFilm;
     public FilmManagement(){
-        listFilm = fileMangement.readFromFileFilm("dataFilm.csv");
+        try {
+            listFilm = file.readFromFileFilm("dataFilm.csv");
+        }catch (Exception e){
+            listFilm = new ArrayList<>();
+        }
+
     }
     public List<Film> getListFilm(){
         return listFilm;
     }
     public void addFilm(Film film){
         listFilm.add(film);
-        fileMangement.writeToFileFilm("dataFilm.csv",listFilm);
+        file.writeToFileFilm("dataFilm.csv",listFilm);
     }
-    public void disPlayListFilm(){
-        for (Film item: listFilm){
-            System.out.println(item);
-        }
-        System.out.println("");
-    }
+
     public int checkIndex(String id){
         for (int i = 0; i < listFilm.size(); i++) {
             if (listFilm.get(i).getIdFilm().equals(id)){
@@ -38,7 +36,15 @@ public class FilmManagement {
             System.out.println("Not Found");
         }else {
             listFilm.set(index,film);
-            fileMangement.writeToFileFilm("dataFilm.csv",listFilm);
+            file.writeToFileFilm("dataFilm.csv",listFilm);
         }
+    }
+    public boolean onlyIDFilm(String id){
+        for (int i = 0; i < listFilm.size(); i++) {
+            if (listFilm.get(i).getIdFilm().equals(id)){
+                return false;
+            }
+        }
+        return true;
     }
 }

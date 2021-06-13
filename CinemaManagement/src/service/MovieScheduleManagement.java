@@ -8,10 +8,10 @@ import java.util.List;
 
 public class MovieScheduleManagement {
     List<MovieSchedule>movieScheduleList;
-    FileMangement fileMangement = new FileMangement();
+    FileMovieSchedule file = new FileMovieSchedule();
     public MovieScheduleManagement(){
         try {
-            movieScheduleList=fileMangement.readFromFileMovieSchedule("dataMovieSchedule.csv") ;
+            movieScheduleList=file.readFromFileMovieSchedule("dataMovieSchedule.csv") ;
         }catch (Exception e){
             e.getMessage();
         }finally {
@@ -23,7 +23,7 @@ public class MovieScheduleManagement {
     }
     public void addMovieSchedule(MovieSchedule movieSchedule,String idMovie){
         movieScheduleList.add(movieSchedule);
-        fileMangement.writeToFileMovieSchedule("dataMovieSchedule.csv",movieScheduleList,idMovie);
+        file.writeToFileMovieSchedule("dataMovieSchedule.csv",movieScheduleList,idMovie);
     }
     public void checkIndex(){
 

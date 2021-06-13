@@ -14,6 +14,10 @@ public class MovieSchedule {
         this.idMovie = idMovie;
 
     }
+    public MovieSchedule(String movieDay, String movieShift){
+        this.movieDay = movieDay;
+        this.movieShift = movieShift;
+    }
 
     public String getMovieDay() {
         return movieDay;

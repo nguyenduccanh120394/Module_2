@@ -36,7 +36,6 @@ public class Film {
         private String content;
         MovieScheduleManagement movieScheduleManagement = new MovieScheduleManagement();
 
-
         public Film() {
         }
 

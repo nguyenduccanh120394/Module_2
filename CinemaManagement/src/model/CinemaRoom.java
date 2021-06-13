@@ -1,5 +1,5 @@
 package model;
-
+import service.CinemaTicketManagement;
 import service.StaffManagement;
 
 public class CinemaRoom {
@@ -14,10 +14,8 @@ public class CinemaRoom {
     private static final int SEAT_HD = 150;
     private static final String ROOM_A = "Vip";
     private static final String ROOM_B = "Normal";
-    private static final String STATUS_A = "Ready";
-    private static final String STATUS_B = "Cleaning up";
-    private static final String STATUS_C = "Installing...";
-    private static final String STATUS_D = "Trouble!!";
+    private static final String STATUS_A = "Còn chỗ";
+    private static final String STATUS_B = "Hết chỗ";
 
     private String roomCode ;
     private int totalNumberOfSeats;
@@ -27,16 +25,21 @@ public class CinemaRoom {
     private String screen;
     private String status;
     private String staff;
-    private int soGheTrong;
+    private int numberOfSeatsBookedByGuests;
+    private MovieScheduleByRoom scheduleByRoom;
+
 
     public CinemaRoom() {
     }
 
-    public CinemaRoom(String roomCode, String kindOfRoom, String status,String staff) {
+    public CinemaRoom(String roomCode, String kindOfRoom,String staff) {
         this.roomCode = roomCode;
         this.kindOfRoom = kindOfRoom;
-        this.status = status;
         this.staff = staff;
+    }
+
+    public String getStaff() {
+        return staff;
     }
 
     public static String getProjectorHd() {
@@ -136,14 +139,10 @@ public class CinemaRoom {
     }
 
     public String getStatus() {
-        if (status.equals("1")){
-            this.status = STATUS_A;
-        }else if (status.equals("2")){
+        if (getNumberOfSeatsBookedByGuests(roomCode)<totalNumberOfSeats){
+            this.status = getNumberOfSeatsBookedByGuests(roomCode)+"/"+getTotalNumberOfSeats();
+        }else if (getNumberOfSeatsBookedByGuests(roomCode)==totalNumberOfSeats){
             this.status = STATUS_B;
-        }else if (status.equals("3")){
-            this.status = STATUS_C;
-        }else if (status.equals("4")){
-            this.status = STATUS_D;
         }
         return status;
     }
@@ -165,9 +164,32 @@ public class CinemaRoom {
         this.staff = staff;
     }
 
+    public int getNumberOfSeatsBookedByGuests(String roomCode) {
+        CinemaTicketManagement cnTicket = new CinemaTicketManagement();
+
+        for (int i = 0; i < cnTicket.getCinemaTicketList().size(); i++) {
+            if (roomCode.equals(cnTicket.getCinemaTicketList().get(i).getRoomCode())){
+                numberOfSeatsBookedByGuests += 1 ;
+            }
+        }
+        return numberOfSeatsBookedByGuests;
+    }
+
+    public void setNumberOfSeatsBookedByGuests(int numberOfSeatsBookedByGuests) {
+        this.numberOfSeatsBookedByGuests = numberOfSeatsBookedByGuests;
+    }
+
+    public MovieScheduleByRoom getScheduleByRoom() {
+        return scheduleByRoom;
+    }
+
+    public void setScheduleByRoom(MovieScheduleByRoom scheduleByRoom) {
+        this.scheduleByRoom = scheduleByRoom;
+    }
+
     @Override
     public String toString() {
-        return "model.CinemaRoom{ ID ROOM: "+roomCode+", KIND OF ROOM: "+getKindOfRoom()+", TOTAL SEATS: "+getTotalNumberOfSeats()
+        return "CinemaRoom{ ID ROOM: "+roomCode+", KIND OF ROOM: "+getKindOfRoom()+", TOTAL SEATS: "+getTotalNumberOfSeats()
                 +", PROJECTOR TYPE: "+getProjectorType()+", SOUND TYPE: "+getSoundType()+", SCREEN SIZE: "+getScreen()
                 +", STATUS: "+getStatus()+", STAFF: "+ getStaff(staff)+ '}';
     }
